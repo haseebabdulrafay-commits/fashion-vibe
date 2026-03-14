@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionVibe — Style Blog & Deals</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">FashionVibe</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#posts">Discover</a></li>
+                <li><a href="#" class="nav-add-btn" id="openAddModal">+ New Post</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">The Curated Edit</p>
+            <h1 class="hero-title">Where Style<br><em>Meets Discovery</em></h1>
+            <p class="hero-sub">Handpicked fashion finds, honest reviews & the best deals across the web</p>
+            <a href="#posts" class="hero-cta">Explore Picks <i class="fas fa-arrow-down"></i></a>
+        </div>
+        <div class="hero-scroll-line"></div>
+    </section>
+
+    <!-- Posts Section -->
+    <section id="posts" class="posts-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Featured</span>
+                <h2 class="section-title">Curated Finds</h2>
+            </div>
+            <div class="posts-grid" id="postsGrid">
+                <!-- Posts rendered by JS -->
+            </div>
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <i class="fas fa-feather-alt"></i>
+                <p>No posts yet. Be the first to share a find!</p>
+                <button onclick="document.getElementById('openAddModal').click()">Create Post</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Post Modal -->
+    <div id="addPostModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-overlay" data-close></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Post</h3>
+                <button class="close-modal" data-close aria-label="Close">&times;</button>
+            </div>
+            <form id="postForm" novalidate>
+                <div class="form-group">
+                    <label for="postTitle">Post Title</label>
+                    <input type="text" id="postTitle" placeholder="e.g. Summer Dresses 2024" required>
+                </div>
+                <div class="form-group">
+                    <label for="postImage">Image URL <span class="optional">(optional)</span></label>
+                    <input type="url" id="postImage" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="postDescription">Description</label>
+                    <textarea id="postDescription" placeholder="Tell your readers what makes this a great find..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="postLinks">Affiliate Links</label>
+                    <textarea id="postLinks" placeholder="[amazon]https://amzn.to/yourlink[/amazon]&#10;[ebay]https://ebay.us/yourlink[/ebay]&#10;[etsy]https://etsy.me/yourlink[/etsy]" required></textarea>
+                    <p class="form-hint">Wrap each link with the store tag, e.g. <code>[amazon]url[/amazon]</code></p>
+                </div>
+                <button type="submit" class="btn-submit">Publish Post</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div id="editPostModal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-overlay" data-close></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Post</h3>
+                <button class="close-modal" data-close aria-label="Close">&times;</button>
+            </div>
+            <form id="editForm" novalidate>
+                <div class="form-group">
+                    <label for="editTitle">Post Title</label>
+                    <input type="text" id="editTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="editImage">Image URL <span class="optional">(optional)</span></label>
+                    <input type="url" id="editImage">
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editLinks">Affiliate Links</label>
+                    <textarea id="editLinks" required></textarea>
+                </div>
+                <input type="hidden" id="editIndex">
+                <button type="submit" class="btn-submit">Update Post</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">FashionVibe</span>
+            </div>
+            <p class="footer-disclaimer">This site uses affiliate links. As an Amazon Associate and partner of various brands, we earn from qualifying purchases at no extra cost to you.</p>
+            <p class="footer-copy">&copy; 2024 FashionVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
